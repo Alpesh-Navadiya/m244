@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="rsgitech" translate="label" sortOrder="300">
+            <label>Codes</label>
+        </tab>
+        <section id="rsgitech_news" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Codes Configuration</label>
+            <tab>rsgitech</tab>
+            <resource>Custom_MyModule::config_customer</resource>
+            <group id="General" translate="label" type="text" sortOrder="10" showInDefault="1">
+                <label>General Options</label>
+                <field id="enable" translate="label" type="select" sortOrder="1" showInDefault="1" canRestore="1">
+                    <label>Module Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>                </field>
+            </group>
+            <group id="storefront" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Store Front</label>
+                <field id="news_link" translate="label comment" type="text" sortOrder="58" showInDefault="1" showInWebsite="1" canRestore="1">
+                    <label>News link</label>
+                    <comment>News link</comment>
+                  
+                </field>
+                 <field id="set_limit" translate="label comment" type="text" sortOrder="59" showInDefault="1" showInWebsite="1" canRestore="1">
+                    <label>Set number of limit</label>
+                    <comment>To set Number of limit.</comment>
+                  
+                </field>
+               
+            </group>
+            </section>
+    </system>
+</config>

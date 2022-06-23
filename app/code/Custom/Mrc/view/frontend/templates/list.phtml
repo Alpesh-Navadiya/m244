@@ -1,0 +1,93 @@
+<?php
+/**
+ * @var $block \Jc\SuperHero\Block\Display
+ */
+
+$heroes = $block->getAllSuperHeroes();
+
+?>
+<?php if (count($heroes) > 0): ?>
+    <table border="1">
+        <tr>
+            <th><?= __("ID") ?></th>
+            <th><?= __("Name") ?></th>
+            <th><?= __("Production Company") ?></th>
+            <th><?= __("Edit/Delete") ?></th>
+        </tr>
+        <?php foreach ($heroes as $hero): ?>
+            <tr>
+                <td><?= $hero->getId() ?></td>
+                <td><?= $hero->getTitle() ?></td>
+                <td><?= $hero->getContent() ?></td>
+                <td><a href="<?= $block->getEditPageUrl().'id/'.$hero->getId();?>">Edit </a>
+                <a class="delete_hero" data-id="<?php echo $hero->getId(); ?>"  href="javascript:void(0)">
+Delete
+</a>
+                <!-- <a href="<//?= $block->getDeleteUrl().'id/'.$hero->getId();?>">Delete</a> -->
+            </td><!-- todo Add the functionality of Edit and Delete Hero -->
+            </tr>
+        <?php endforeach; ?>
+    </table>
+<?php else: ?>
+    <h1 style="color: red"><?= __("Super Heroes still not born :(") ?></h1>
+<?php endif; ?>
+<hr />
+<form method="post" action="<?= $block->getPostUrl() ?>">
+    <fieldset style="margin: 0 auto; width: 50%">
+        <div>
+            <label for="name"><?= __("Name") ?></label>
+                <input type="text" name="title"/>
+        </div>
+        <div>
+            <label for="production_company"><?= __("Production Company") ?></label>
+                <input type="text" name="content"/>
+        </div>
+        <input type="submit" value="<?= __("Add Hero") ?>" />
+    </fieldset>
+</form>
+
+
+<script>
+    require([
+    'jquery',
+    'Magento_Ui/js/modal/modal'
+    ],function($,modal){
+        $(document).ready(function() {
+
+            $(".delete_hero").on('click',function(event){
+                event.preventDefault();
+                var el = this;
+
+                if ( confirm("Do you want to Delete?")) {
+                var id = $(this).attr('data-id');
+             
+                var param = { id : id};
+                var url = '<?php  echo $block->getDeleteUrl();?>' + id;
+                 jQuery.ajax({
+                    url: url,
+                    showLoader: true,
+                    data: param,
+                    type: "POST",
+                    
+                    success: function (res) {
+                            
+                            $(el).closest('tr').css('background', 'tomato');
+                            $(el).closest('tr').fadeOut(800, function() {
+                            $(this).remove();
+                            });
+
+                          },
+                         error: function (error) {
+                            console.log(error);
+                         }
+
+                 });
+
+                }
+            });
+            
+        });
+        
+    });   
+
+</script>

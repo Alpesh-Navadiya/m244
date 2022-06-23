@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Custom_MyModule::codes" title="Codes" translate="title" module="Custom_MyModule" sortOrder="20" dependsOnModule="Custom_MyModule" resource="Custom_MyModule::codes"/>
+        <add id="Custom_MyModule::crud" title="Crud" translate="title" module="Custom_MyModule" sortOrder="10" parent="Custom_MyModule::codes"  resource="Custom_MyModule::crud"/>
+        <add id="Custom_MyModule::data" title="Content" translate="title" module="Custom_MyModule" sortOrder="99" parent="Custom_MyModule::crud" action="codes/crud" resource="Custom_MyModule::data"/>
+
+        <add id="Custom_MyModule::setting" title="Setting" translate="title" module="Custom_MyModule" sortOrder="10" parent="Custom_MyModule::codes"  resource="Custom_MyModule::setting"/>
+        <add id="Custom_MyModule::configration" title="Configration" translate="title" module="Custom_MyModule" sortOrder="99" parent="Custom_MyModule::setting" action="admin/system_config/edit/section/rsgitech_news" resource="Custom_MyModule::setting"/>
+
+    </menu>
+</config>
+
+

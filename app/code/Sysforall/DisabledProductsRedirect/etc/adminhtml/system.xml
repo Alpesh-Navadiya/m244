@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="syng" translate="label" sortOrder="200">
+            <label>Disable Redirection</label>
+        </tab>
+        <section id="sysforall" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Disabled Products Redirect</label>
+            <tab>syng</tab>
+            <resource>Sysforall_DisabledProductsRedirect::disabledproductsredirect</resource>
+            <group id="disabled_products_redirect" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Disabled Products Redirect</label>
+                <field id="enable" translate="label" sortOrder="1" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="redirection_message" translate="label comment" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Custom URL Key</label> 
+                    <comment>https://www.hottubspasupplies.com/hot-spring-watkins-parts.html
+                        like url key : hot-spring-watkins-parts.html
+                    </comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

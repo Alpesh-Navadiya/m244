@@ -1,0 +1,93 @@
+<?php
+
+$form_url = $this->getUrl('demorecaptcha/index/save');
+
+
+?>
+<div id="modal-call-for-price">
+    <div class="modal-body">
+        <form class="form"
+            action="<?= $block->escapeHtmlAttr($form_url) ?>"
+            id="demo-recaptcha-form"
+            method="post"
+            onsubmit="return capatcheFunction()"
+            enctype='multipart/form-data'
+            autocomplete="off">
+            <input type="hidden" name="product_id" >
+            <fieldset class="fieldset">
+                <div class="field required">
+                    <label for="user_name" class="label">
+                      <span><?= $block->escapeHtml('Name:') ?></span>
+                    </label>
+                    <div class="control">
+                        <input type="text"
+                               name="customer_name"
+                               title="<?= $block->escapeHtml('Name') ?>"
+                               class="input-text"
+                               data-validate="{required:true}">
+                    </div>
+                </div>
+                <div class="field required">
+                    <label for="user_name" class="label">
+                      <span><?= $block->escapeHtml('E-mail:') ?></span>
+                    </label>
+                    <div class="control">
+                        <input type="email"
+                               name="customer_email"
+                               title="<?= $block->escapeHtml('E-mail') ?>"
+                               class="input-text"
+                               data-validate="{required:true, 'validate-email':true}">
+                    </div>
+                </div>
+               <!--  <?php //$block->getChildHtml('form.additional.info.demo.for.recaptcha') ?> -->
+
+                <div class="field recaptcha">
+
+                <?php if ($block->isEnabled()): ?>
+                    <script type="text/javascript" src="https://www.google.com/recaptcha/api.js"></script>
+                    <div class="g-recaptcha" name="recaptcha" id="recaptcha" data-sitekey="<?= $block->getSiteKey();?>">
+                        
+                    </div>
+                <?php endif; ?>
+                </div>
+           </fieldset>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button type="submit"
+                            class="action submit primary "
+                            title="<?= $block->escapeHtml('Submit') ?>">
+                              <span>
+                                <?= $block->escapeHtml('Submit') ?>
+                              </span>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <script type="text/x-magento-init">
+          {
+              "#demo-recaptcha-form": {
+                  "validation": {}
+              }
+          }
+        </script>
+    </div>
+</div>
+
+<script type="text/javascript">
+function capatcheFunction() {
+    var exists = document.getElementById("g-recaptcha-response");
+    if(exists == null){
+
+    } else{
+        var check = document.getElementById("g-recaptcha-response").value;
+        if(check=='' || check == null){
+            document.getElementById("recaptcha").style.border = "1px solid #ea0e0e";
+            return false;
+        }
+        else{
+            document.getElementById("recaptcha").style.border = "none";
+            return true;
+        }
+    }
+}
+</script>

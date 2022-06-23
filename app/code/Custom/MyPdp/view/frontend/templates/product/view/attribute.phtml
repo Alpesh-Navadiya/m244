@@ -1,0 +1,5 @@
+<?php
+$product = $block->getProduct();
+$attributeValue =$product->getResource()->getAttribute('custom_text');
+echo  $attributeValue->getFrontend()->getValue($product);
+?>

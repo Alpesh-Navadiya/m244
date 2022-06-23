@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <demorecaptcha>
+            <settings>
+                <enabled>0</enabled>
+                <site_key>sitekey</site_key>
+                <secret_key>secretkey</secret_key>
+                <is_check_scores>0</is_check_scores>
+                <scores>0.5</scores>
+            </settings>
+        </demorecaptcha>
+    </default>
+</config>
+
+
+<!-- <?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <recaptcha_frontend>
+            <type_for>
+                <customform/>
+            </type_for>
+        </recaptcha_frontend>
+    </default>
+</config> -->

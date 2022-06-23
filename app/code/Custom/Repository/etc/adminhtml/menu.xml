@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+<add id="Custom_Repository::blog" title="News" translate="title" module="Custom_Repository" sortOrder="20" dependsOnModule="Custom_Repository" resource="Custom_Repository::blog"/>
+<add id="Custom_Repository::crud" title="Crud" translate="title" module="Custom_Repository" sortOrder="10" parent="Custom_Repository::blog" resource="Custom_Repository::crud"/>
+<add id="Custom_Repository::data" title="Content" translate="title" module="Custom_Repository" sortOrder="99" parent="Custom_Repository::crud" action="news/allnews" resource="Custom_Repository::data"/>
+</menu>
+
+</config>
+  

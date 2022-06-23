@@ -1,0 +1,39 @@
+<?php
+    $collection = $block->getEditData();
+?>
+<div id="custom-form">
+   <form class="contact custom" 
+         action="<?php echo $this->getUrl('superhero/hero/save', ['_secure' => true]);?>"
+         id="custom-form"
+         method="post"
+         data-hasrequired="<?php  echo __('* Required Fields') ?>"
+         data-mage-init='{"validation":{}}'>
+ 
+       <input type="hidden" name="id" id="id" value="<?= $collection['id']; ?>" />
+ 
+        <fieldset class="fieldset">
+            <legend class="legend"><span><?php  echo __("Contact") ?></span></legend><br />
+            <div class="field name required">
+                <label class="label" for="title"><span><?php  echo __('Title') ?></span></label>
+                <div class="control">
+                    <input name="title" id="title" title="<?php  echo __('Title') ?>" value="<?= $collection['title']; ?>" class="input-text" type="text" data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field email required">
+                <label class="label" for="Content"><span><?php  echo __('Content') ?></span></label>
+                <div class="control">
+                    <input name="content" id="content" title="<?php  echo __('Content') ?>" value="<?= $collection['content']; ?>" class="input-text" type="text" data-validate="{required:true}"/>
+                </div>
+            </div>
+            
+        </fieldset>
+    
+        <div class="actions-toolbar">
+            <div class="primary">
+                               <button type="submit" title="<?php  echo __('Submit') ?>" class="action submit primary" id="custom_btn">
+                    <span><?php  echo __('Submit') ?></span>
+                </button>
+            </div>
+        </div>
+   </form>
+</div>

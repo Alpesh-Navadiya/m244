@@ -1,0 +1,17 @@
+<?php
+$product = $block->getProduct();
+
+// get Product name
+ echo 'Name :' .' '. $product->getName().'<br>';
+
+// get product description
+  echo 'Description :' .' '.  $product->getDescription();
+
+
+  $getting = $product->getData('quantity_and_stock_status');
+  echo  'Qty in stock :' .' '. $getting['qty'];
+
+  // Get custom product attribute value, change ‘custom_product_attribute’ with your ‘product attribute code’
+echo $product->getData('custom_product_attribute').'<br>';
+
+?>

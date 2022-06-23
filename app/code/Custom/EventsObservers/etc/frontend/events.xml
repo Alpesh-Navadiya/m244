@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="catalog_controller_product_view">
+        <observer name="Obname" instance="Custom\EventsObservers\Observer\Product\Data" />
+    </event>
+
+    <event name="my_custom_event_observer">
+        <observer name="your_observer_name" instance="Custom\EventsObservers\Observer\GetRecord"/>
+    </event>
+      <event name="checkout_cart_product_add_after">
+       <observer name="customprice" instance="Custom\EventsObservers\Observer\Product\CustomPrice" />
+   </event>
+   <event name="controller_action_predispatch">
+    <observer name="page_observer" instance="Custom\EventsObservers\Observer\Page" />
+</event>
+
+<event name="md_customobserver_log">
+        <observer name="md_log_text" instance="Custom\EventsObservers\Observer\CustomObserver" />
+    </event>
+
+</config>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="aktest" translate="label" sortOrder="10">
+            <label>Recaptcha</label>
+        </tab>
+        <section id="demorecaptcha" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>DemoRecaptcha</label>
+            <tab>aktest</tab>
+            <resource>Ak_DemoRecaptcha::demorecaptcha</resource>
+            <group id="settings" type="text"  sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+
+                <label>Extension Settings</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10"
+                       showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="site_key" translate="label" type="text" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Site Key</label>
+                </field>
+                <field id="secret_key" translate="label" type="password" sortOrder="30"
+                       showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Secret Key</label>
+                </field>
+                <field id="is_check_scores" translate="label" type="select" sortOrder="33"
+                       showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Enabled Check Scores</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="scores" translate="label" type="text" sortOrder="35"
+                       showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Scores</label>
+                    <depends><field id="is_check_scores">1</field></depends>
+                </field>
+            
+                <field id="customform" translate="label" type="select" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Enable for Custom Form</label>
+                    <source_model>Magento\ReCaptchaAdminUi\Model\OptionSource\Type</source_model>
+                </field>
+            </group>
+            
+        </section>
+    </system>
+</config>
