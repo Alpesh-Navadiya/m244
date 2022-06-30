@@ -1,0 +1,50 @@
+<?php
+
+$helper = $this->helper('\Custom\Mrc\Helper\Data');
+$values = $helper->getCustomModules();
+$productCollection = $helper->getProductCollection();
+
+
+?>
+
+
+
+<?php if (count($productCollection) > 0): ?>
+    <table border="1">
+        <h1>Product List</h1>
+        <tr>
+            <th><?= __("Product Id") ?></th>
+            <th><?= __("Product Name") ?></th>
+
+        </tr>
+        <?php foreach ($productCollection as $product): ?>
+            <tr>
+
+                <td><?= $product->getId() ?></td>
+                <td><?= $product->getName() ?></td>
+
+            </tr>
+        <?php endforeach; ?>
+    </table>
+
+<?php endif; ?>
+
+<hr>
+<?php if (count($values) > 0): ?>
+    <table border="1">
+        <h1>Module List</h1>
+        <tr>
+
+            <th><?= __("Name") ?></th>
+
+        </tr>
+        <?php foreach ($values as $hero): ?>
+            <tr>
+
+                <td><?= $hero ?></td>
+
+            </tr>
+        <?php endforeach; ?>
+    </table>
+
+<?php endif; ?>

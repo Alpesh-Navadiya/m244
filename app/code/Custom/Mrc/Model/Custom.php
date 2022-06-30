@@ -2,12 +2,8 @@
 
 namespace Custom\Mrc\Model;
 
-/**
- * Class CustomApi
- *
- * @package Rk\CustomRestApi\Model
- */
-class Custom implements \Custom\Mrc\Api\CustomInterface
+
+class Custom  implements \Custom\Mrc\Api\CustomInterface
 {
     protected $_customerFactory;
 
@@ -16,11 +12,7 @@ class Custom implements \Custom\Mrc\Api\CustomInterface
     ) {
         $this->_customerFactory = $customerFactory;
     }
-
-    /**
-     * Get Customer List
-     * @return string
-     */
+    /** * @return string */
 
     public function getData()
     {
@@ -38,11 +30,36 @@ class Custom implements \Custom\Mrc\Api\CustomInterface
             }
 
         } catch (\Exception $e) {
-         dd($e);
+        dd($e);
+        }
+         echo $returnArray = json_encode($response);
+            die();
+      //  return $returnArray;
+    }
+
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setData($data)
+    {
+        try {
+        $title =  $data['title'];
+        $content =$data['content'];
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); // Instance of object manager
+        $resource = $objectManager->get('Magento\Framework\App\ResourceConnection');
+        $connection = $resource->getConnection();
+        $tableName = $resource->getTableName('jc_superhero');
+
+        $sql = "Insert Into " . $tableName . " ( title, content) Values ('".$title."','".$content."')";
+         $connection->query($sql);
+             $response = ['status' => true, 'data' => "Record successfully saved"];
+
+        } catch (\Exception $e) {
+            dd($e);
         }
         echo $returnArray = json_encode($response);
-            die();
-       // return $returnArray;
+        die();
     }
 
 }

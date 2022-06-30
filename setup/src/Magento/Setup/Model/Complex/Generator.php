@@ -37,7 +37,7 @@ class Generator extends AbstractSource
     protected $_count = 0;
 
     /**
-     * Array of templates variables (static values or callables)
+     * Array of template variables (static values or callables)
      *
      * @var array
      */
@@ -73,7 +73,7 @@ class Generator extends AbstractSource
     }
 
     /**
-     * Get row index for templates
+     * Get row index for template
      *
      * @param int $key
      *

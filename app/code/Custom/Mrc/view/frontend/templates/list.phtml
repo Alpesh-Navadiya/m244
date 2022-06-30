@@ -29,8 +29,8 @@ Delete
         <?php endforeach; ?>
     </table>
 <?php else: ?>
-    <h1 style="color: red"><?= __("Super Heroes still not born :(") ?></h1>
-<?php endif; ?>
+   ` <h1 style="color: red"><?= __("Super Heroes still not born :(") ?></h1>
+<?php endif; ?>`
 <hr />
 <form method="post" action="<?= $block->getPostUrl() ?>">
     <fieldset style="margin: 0 auto; width: 50%">
@@ -60,7 +60,7 @@ Delete
 
                 if ( confirm("Do you want to Delete?")) {
                 var id = $(this).attr('data-id');
-             
+
                 var param = { id : id};
                 var url = '<?php  echo $block->getDeleteUrl();?>' + id;
                  jQuery.ajax({
@@ -68,9 +68,9 @@ Delete
                     showLoader: true,
                     data: param,
                     type: "POST",
-                    
+
                     success: function (res) {
-                            
+
                             $(el).closest('tr').css('background', 'tomato');
                             $(el).closest('tr').fadeOut(800, function() {
                             $(this).remove();
@@ -85,9 +85,9 @@ Delete
 
                 }
             });
-            
+
         });
-        
-    });   
+
+    });
 
 </script>
