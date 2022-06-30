@@ -461,7 +461,7 @@ class Processor
     }
 
     /**
-     * Find templates path
+     * Find template path
      *
      * @param string $template
      * @return string

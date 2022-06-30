@@ -15,7 +15,7 @@ use Magento\Framework\App\ObjectManager;
 use Magento\Store\Model\StoreManagerInterface;
 
 /**
- * Product templates generator
+ * Product template generator
  */
 class CustomerTemplateGenerator implements TemplateEntityGeneratorInterface
 {
@@ -73,7 +73,7 @@ class CustomerTemplateGenerator implements TemplateEntityGeneratorInterface
     }
 
     /**
-     * Get customer templates
+     * Get customer template
      *
      * @return Customer
      */
@@ -112,7 +112,7 @@ class CustomerTemplateGenerator implements TemplateEntityGeneratorInterface
     }
 
     /**
-     * Get address templates.
+     * Get address template.
      *
      * @param int $customerId
      * @return Address
