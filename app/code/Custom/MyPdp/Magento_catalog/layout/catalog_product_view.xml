@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+   <body>
+       <referenceBlock name="product.info.details">
+          
+              
+        <block class="Magento\Catalog\Block\Product\View\Description" name="product.info.pdp" template="Custom_MyPdp::product/view/pdp.phtml" after="page.main.title">
+              <arguments>
+                <argument name="at_call" xsi:type="string">getProductName</argument>
+                <argument name="at_code" xsi:type="string">custom_text</argument>
+                <argument name="css_class" xsi:type="string">custom_text</argument>
+                <argument name="at_label" xsi:type="string">ProductName</argument>
+                <argument name="add_attribute" xsi:type="string">itemprop="custom_text"</argument>
+         </arguments>
+        </block>
+     </referenceBlock>
+   </body>
+</page>

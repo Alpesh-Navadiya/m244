@@ -1,0 +1,24 @@
+<?php
+ $pdata =  $block->getViewModel()->getProduct();
+?>
+<table border="1">
+    <h1>Product List</h1>
+    <tr>
+        <th><?= __("Product Id") ?></th>
+        <th><?= __("Product Name") ?></th>
+        <th><?= __("Sku") ?></th>
+        <th><?= __("Price") ?></th>
+
+    </tr>
+    <?php foreach ($pdata as $product):    ?>
+        <tr>
+
+            <td><?= $product->getId() ?></td>
+            <td><?= $product->getData('name') ?></td>
+            <td><?= $product->getSku() ?></td>
+            <td><?= $product->getPrice() ?></td>
+
+        </tr>
+    <?php endforeach; ?>
+</table>
+
