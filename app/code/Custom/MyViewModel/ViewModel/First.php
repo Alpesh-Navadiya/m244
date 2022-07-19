@@ -1,9 +1,13 @@
 <?php
+
 namespace Custom\MyViewModel\ViewModel;
 
-class First implements \Magento\Framework\View\Element\Block\ArgumentInterface
+use Magento\Framework\View\Element\Block\ArgumentInterface;
+
+class First implements ArgumentInterface
 {
-    public function firstMessage() {
+    public function firstMessage()
+    {
 
         $customerObj = 'message from view model';
         return $customerObj;

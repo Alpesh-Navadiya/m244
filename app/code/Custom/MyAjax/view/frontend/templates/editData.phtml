@@ -1,0 +1,118 @@
+<?php
+$collection = $block->getEditData();
+
+?>
+<div id="custom-form">
+    <form class="contact custom"
+
+          enctype="multipart/form-data" id="my-form"
+          method="post"
+          name="eventform"
+          data-hasrequired="<?php  echo __('* Required Fields') ?>"
+          data-mage-init='{"validation":{}}'>
+        <input type="hidden" name="editId" id="editId" value="<?= $collection['id']; ?>" />
+
+        <fieldset class="fieldset">
+            <legend class="legend"><span><?php  echo __("Contact") ?></span></legend><br />
+            <div class="field name required">
+                <label class="label" for="name"><span><?php  echo __('Name') ?></span></label>
+                <div class="control">
+                    <input name="name" id="name" value="<?= $collection['name']; ?>" title="<?php  echo __('Name') ?>" class="input-text" type="text" data-validate="{required:true}"/>
+                </div>
+            </div>
+            <div class="field email required">
+                <label class="label" for="email"><span><?php  echo __('Email') ?></span></label>
+                <div class="control">
+                    <input name="email" id="email" value="<?= $collection['email']; ?>" title="<?php  echo __('Email') ?>" class="input-text" type="text" data-validate="{required:true, 'validate-email':true}"/>
+                </div>
+            </div>
+            <div class="field phone_no">
+                <label class="label" for="phone_no"><span><?php  echo __('Contact No') ?></span></label>
+                <div class="control">
+                    <input name="mobilenumber" value="<?= $collection['mobilenumber']; ?>" id="mobilenumber" title="<?php  echo __('Contact No') ?>" class="input-text validate-number" type="text"/>
+                </div>
+            </div>
+            <div class="field message">
+                <label class="label" for="message"><span><?php  echo __('Message') ?></span></label>
+                <div class="control">
+                    <input name="message" id="message" value="<?= $collection['message']; ?>" title="<?php  echo __('Message') ?>" class="input-text" type="text"/>
+                </div>
+            </div>
+
+            <div class="field message">
+                <label class="label" for="message"><span><?php  echo __('Message') ?></span></label>
+                <div class="control">
+                    <img src="<?php echo $block->getUrl('pub/media').$collection['image']?>"/>
+                    <input type="file" name="image" id="image"  value="<?= $collection['image']; ?>"  class="input-text" >
+                </div>
+            </div>
+
+        </fieldset>
+
+        <div class="actions-toolbar">
+            <div class="primary">
+                <input type="hidden" name="hideit" id="hideit" value="" />
+                <button type="submit"  id="btnSubmit" title="<?php  echo __('Submit') ?>" class="action submit primary" id="custom_btn">
+                    <span><?php  echo __('Submit') ?></span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+    require([
+        'jquery',
+        'Magento_Ui/js/modal/modal'
+    ],function($,modal){
+        $(document).ready(function() {
+            jQuery("#my-form").submit(function(event){
+
+                //stop submit the form, we will post it manually.
+                event.preventDefault();
+                // Get form
+                var form = $('#my-form')[0];
+
+                // FormData object
+                var data = new FormData(form);
+
+                // If you want to add an extra field for the FormData
+                data.append("CustomField", "This is some extra data, testing");
+
+                // disabled the submit button
+                //$("#btnSubmit").prop("disabled", true);
+                var url = "<?php echo $block->getBaseUrl().'myajax/index/save' ?>";
+                if (jQuery('#my-form').valid()) {
+
+
+                    $.ajax({
+                        type: "POST",
+                        url: url,
+                        data: data,
+                        processData: false,
+                        contentType: false,
+                        cache: false,
+                        timeout: 800000,
+                        success: function (data) {
+
+                            $("#my-form")[0].reset();
+                            window.location.href = "<?php echo $block->getBaseUrl() . 'myajax/index/index' ?>";
+
+                            $("#output").text(data);
+                            console.log("SUCCESS : ", data);
+                            $("#btnSubmit").prop("disabled", false);
+                        },
+                        error: function (e) {
+                            $("#output").text(e.responseText);
+                            console.log("ERROR : ", e);
+                            $("#btnSubmit").prop("disabled", false);
+                        }
+                    });
+                }
+
+            });
+
+        });
+
+    });
+
+</script>

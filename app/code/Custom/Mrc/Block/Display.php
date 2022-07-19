@@ -20,9 +20,10 @@ class Display extends Template
      */
     public function __construct(
         Template\Context $context,
-        Collection $collection,
-        array $data = []
-    ) {
+        Collection       $collection,
+        array            $data = []
+    )
+    {
         $this->collection = $collection;
         parent::__construct($context, $data);
     }
@@ -32,7 +33,7 @@ class Display extends Template
      */
     public function getAllSuperHeroes()
     {
-        
+
         return $this->collection;
     }
 
@@ -49,7 +50,7 @@ class Display extends Template
      */
     public function getEditPageUrl()
     {
-        
+
         return $this->getUrl('superhero/hero/edit');
     }
 

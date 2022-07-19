@@ -1,0 +1,67 @@
+<div>
+    <?php
+        $form_url = $this->getUrl('myajax/index/recaptchaData');
+   ?>
+    <form class="form-rma"
+          action="<?php echo $form_url; ?>"
+          id="rma_form"
+          method="post"
+          enctype="multipart/form-data"
+          onsubmit="return capatcheFunction()"
+          data-hasrequired="<?php echo __('* Required Fields') ?>"
+          data-mage-init='{"validation":{}}'>
+
+        <h3><?php echo __('Testing Form')?></h3>
+        <fieldset class="fieldset rma-info">
+            <div class="field name required">
+                <label class="label" for="customer_name"><?php echo __('Name')?></label>
+                <input name="name" id="name" class="input-text" type="text" data-validate="{required:true}" />
+            </div>
+
+            <div class="field email required">
+                <label class="label" for="email"><?php echo __('Email')?></label>
+                <input name="email" id="email" class="input-text" type="email" data-validate="{required:true, 'validate-email':true}" />
+            </div>
+
+            <div class="field phone required">
+                <label class="label" for="phone"><?php echo __('Phone Number') ?></label>
+                <input name="mobilenumber" id="mobilenumber" class="input-text" type="text" data-validate="{required:true}" />
+            </div>
+
+            <div class="field address required">
+                <label class="label" for="address"><?php echo __('Address') ?></label>
+                <input name="message" id="message" class="input-text" type="text" data-validate="{required:true}" />
+            </div>
+
+            <div class="field recaptcha">
+                <div class="g-recaptcha" name="recaptcha" id="recaptcha" data-sitekey="6LcXMeQgAAAAADAoSfFfRZ_XSOGgZfWwyXafBNbE"></div>
+            </div>
+        </fieldset>
+
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button type="submit" title="<?php echo __('Submit') ?>" class="action submit primary">
+                    <span><?php echo __('Submit') ?></span>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    function capatcheFunction() {
+        var exists = document.getElementById("g-recaptcha-response");
+        if(exists == null){
+
+        } else{
+            var check = document.getElementById("g-recaptcha-response").value;
+            if(check=='' || check == null){
+                document.getElementById("recaptcha").style.border = "1px solid #ea0e0e";
+                return false;
+            }
+            else{
+                document.getElementById("recaptcha").style.border = "none";
+                return true;
+            }
+        }
+    }
+</script>

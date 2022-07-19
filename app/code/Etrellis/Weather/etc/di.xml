@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Etrellis\Weather\Api\WeatherManagementInterface" type="Etrellis\Weather\Model\WeatherManagement"/>
+	<preference for="Etrellis\Weather\Api\WeatherRepositoryInterface" type="Etrellis\Weather\Model\WeatherRepository"/>
+	<preference for="Etrellis\Weather\Api\Data\WeatherInterface" type="Etrellis\Weather\Model\Weather"/>
+	<preference for="Etrellis\Weather\Api\Data\WeatherSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Etrellis\Weather\Model\ResourceModel\Weather\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">etrellis_weather_weather</argument>
+			<argument name="resourceModel" xsi:type="string">Etrellis\Weather\Model\ResourceModel\Weather\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="etrellis_weather_weather_listing_data_source" xsi:type="string">Etrellis\Weather\Model\ResourceModel\Weather\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+</config>

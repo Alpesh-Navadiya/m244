@@ -5,11 +5,11 @@
  */
 namespace Custom\MyViewModel\Model;
 
-
 class Product extends \Magento\Catalog\Model\Product
 {
-   public function getName(){
-       $name = parent::getName();
-       $price = $this->getData('price');
-   }
+    public function getName()
+    {
+        $name = parent::getName();
+        $price = $this->getData('price');
+    }
 }

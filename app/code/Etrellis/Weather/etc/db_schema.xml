@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="etrellis_weather_weather" resource="default" engine="innodb" comment="etrellis_weather_weather Table">
+		<column xsi:type="int" name="weather_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="weather_id"/>
+		</constraint>
+		<column name="temp" nullable="true" xsi:type="decimal" comment="temp" scale="4" precision="12"/>
+		<column name="temp_min" nullable="true" xsi:type="decimal" comment="temp_min" scale="4" precision="12"/>
+		<column name="temp_max" nullable="true" xsi:type="decimal" comment="temp_max" scale="4" precision="12"/>
+		<column name="pressure" nullable="true" xsi:type="int" comment="pressure" identity="false"/>
+		<column name="humidity" nullable="true" xsi:type="int" comment="humidity" identity="false"/>
+		<column name="speed" nullable="true" xsi:type="decimal" comment="speed" scale="4" precision="12"/>
+		<column name="deg" nullable="true" xsi:type="int" comment="deg" identity="false"/>
+		<column name="timezone" nullable="true" xsi:type="int" comment="timezone" identity="false"/>
+		<column name="dattime" nullable="false" xsi:type="timestamp" default="CURRENT_TIMESTAMP" comment="dattime"/>
+	</table>
+</schema>

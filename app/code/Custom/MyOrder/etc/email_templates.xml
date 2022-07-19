@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="sales_email_invoice_pdf_template" label="Send a PDF Invoice Email" file="pdf_template.html"
+              type="html" module="Custom_MyOrder" area="frontend"/>
+    <template id="admin_emails_login_success_email_template" label="Admin Login Success" file="backend_auth_user_login_success.html" type="html" module="Custom_MyOrder" area="frontend"/>
+    <template id="newsletter_subscription_success_email_template" label="Subscription Success" file="subscr_success.html" type="html" module="Custom_MyOrder" area="frontend"/>
+    <template id="custom_transactional_email_customer_logged_in_email_template" label="Customer Logged In" file="customer_logged_in.html" type="html" module="Custom_MyOrder" area="frontend"/>
+
+</config>

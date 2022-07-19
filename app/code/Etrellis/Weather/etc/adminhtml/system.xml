@@ -1,0 +1,27 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="etrellis" translate="label" sortOrder="1">
+            <label>Etrellis</label>
+        </tab>
+        <section id="weather" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+            <label>Weather</label>
+            <tab>etrellis</tab>
+            <resource>Etrellis_Weather::config_etrellis_weather</resource>
+            <group id="options" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+                <label>Weather Options</label>
+                <field id="api_key" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1"
+                       translate="label">
+                    <label>API Key</label>
+                    <comment/>
+                </field>
+                <field id="city_id" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1"
+                       translate="label">
+                    <label>City Id</label>
+                    <comment/>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

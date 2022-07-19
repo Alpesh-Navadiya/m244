@@ -1,0 +1,45 @@
+<?php
+/**
+ * @var $block \Custom\MyAjax\Block\getData1
+ */
+?>
+<table>
+    <a class="action primary" href="<?= $block->getUrl('myajax/index/insert'); ?>">Add Record</a>
+
+    <tr>
+        <th><?= __('Name'); ?></th>
+        <th><?= __('Email'); ?></th>
+        <th><?= __('Contact No'); ?></th>
+        <th><?= __('Message'); ?></th>
+        <th><?= __('Contact No'); ?></th>
+        <th><?= __('Message'); ?></th>
+        <th><?= __('Created At'); ?></th>
+        <th><?= __('Updated At'); ?></th>
+        <th colspan="2"><?= __('Action'); ?></th>
+    </tr>
+    <?php
+    $collectionData = $block->getData1();
+    $pathmedia = "pub/media";
+    foreach ($collectionData as $collection):
+
+        ?>
+        <tr>
+            <td><?= $collection->getId(); ?></td>
+            <td><?= $collection->getName(); ?></td>
+            <td><?= $collection->getEmail(); ?></td>
+            <td><?= $collection->getMobilenumber(); ?></td>
+            <td><?= $collection->getMessage(); ?></td>
+            <td><img src="<?php echo $block->getUrl('pub/media') . $collection->getImage()?>"/></td>
+            <td><?= $collection->getCreatedAt(); ?></td>
+            <td><?= $collection->getUpdatedAt(); ?></td>
+            <td>
+                <a href="<?= $block->getUrl('myajax/index/edit') . 'id/' . $collection->getId(); ?>" class="action primary">Edit</a>
+            </td>
+            <td>
+                <a href="<?= $block->getUrl('myajax/index/delete') . '?id=' . $collection->getId();  ?>" class="action primary">Delete</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+
+

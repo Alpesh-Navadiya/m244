@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Etrellis::top_level" title="Etrellis" module="Etrellis_Weather" sortOrder="9999" resource="Magento_Backend::content"/>
+		<add id="Etrellis_Weather::etrellis_weather_weather" title="Weather Data" module="Etrellis_Weather" sortOrder="9999" resource="Magento_Backend::content" parent="Etrellis::top_level" action="etrellis_weather/weather/index"/>
+	</menu>
+</config>

@@ -1,0 +1,35 @@
+<!-- For now added css directly in this phtml  -->
+<?php $currentTime = time(); ?>
+<div data-bind="scope: 'kojs-weather'">
+    <div class="report-container">
+        <h2><span class="lableCity"></span> Weather Status</h2>
+        <div class="time">
+            <div><?php echo date("jS F, Y",$currentTime); ?></div>
+            <div class="weatherDisc"></div>
+        </div>
+        <div class="weather-forecast">
+            <img
+                src="http://openweathermap.org/img/w/.png"
+                class="weather-icon" /> 
+                <span class="tempmax"></span>
+                <span class="minTemperature"></span>
+        </div>
+        <div class="time">
+            <div class="humidity">Humidity: </div>
+            <div class="windcheck">Wind: </div>
+        </div>
+    </div>
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "kojs-weather": {
+                        "component": "Etrellis_Weather/js/viewModelweather"
+                    }
+                }
+            }
+        }
+    }
+</script>
