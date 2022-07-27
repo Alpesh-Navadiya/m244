@@ -1,0 +1,15 @@
+
+<div id="delivery-comment">
+    <strong><?= __('Comment') ?>:</strong>
+    <br/>
+    <span class="price"><?= $block->getDeliveryComment() ?></span>
+</div>
+<script type="text/javascript">
+    require(
+        ['jquery'],
+        function($) {
+                       var element = $('#delivery-comment').detach();
+            $('.box-order-shipping-method').append(element);
+        }
+    );
+</script>

@@ -1,0 +1,83 @@
+<?php
+    $heroes = $block->getAllList();
+?>
+<?php if (count($heroes) > 0): ?>
+
+    <table border="1">
+        <a class="action primary" href="<?= $block->getUrl('repo1/index/insert'); ?>">Add Record</a>
+        <tr>
+            <th><?= __("ID") ?></th>
+            <th><?= __("Name") ?></th>
+            <th><?= __("Description") ?></th>
+            <th><?= __("Image") ?></th>
+            <th><?= __("Created") ?></th>
+            <th colspan="2"><?= __("Action") ?></th>
+        </tr>
+        <?php foreach ($heroes as $hero):  ?>
+            <tr>
+                <td><?= $hero->getEntityId() ?></td>
+                <td><?= $hero->getTitle() ?></td>
+                <td><?= $hero->getDescription() ?></td>
+                <td> <img src="<?php echo $block->getUrl('pub/media') . $hero->getImage()?>"/></td>
+                <td><?= $hero->getCreatedAt() ?></td>
+                <td><a href="<?= $block->getUrl('repo1/index/edit') . 'id/' . $hero->getEntityId(); ?>" class="action primary">Edit</a></td>
+                <td><a class="delete_hero" data-id="<?php echo $hero->getEntityId(); ?>"  href="javascript:void(0)">
+Delete
+                    </a></td>
+                <!-- <a href="<//?= $block->getDeleteUrl().'id/'.$hero->getId();?>">Delete</a> -->
+            </td><!-- todo Add the functionality of Edit and Delete Hero -->
+            </tr>
+        <?php endforeach; ?>
+    </table>
+<?php else: ?>
+    <h1 style="color: red"><?= __("Super Heroes still not born :(") ?></h1>
+<?php endif; ?>`
+<hr />
+
+
+<script>
+
+    require([
+    'jquery',
+    'Magento_Ui/js/modal/modal'
+    ],function($,modal){
+        $(document).ready(function() {
+
+            $(".delete_hero").on('click',function(event){
+                event.preventDefault();
+                var el = this;
+
+                if ( confirm("Do you want to Delete?")) {
+                var id = $(this).attr('data-id');
+
+                var param = { id : id};
+                    var url = "<?php echo $block->getBaseUrl() . 'repo1/index/delete/' ?>"+ id;
+
+                 jQuery.ajax({
+                    url: url,
+                    showLoader: true,
+                    data: param,
+                    type: "POST",
+
+                    success: function (res) {
+
+                            $(el).closest('tr').css('background', 'tomato');
+                            $(el).closest('tr').fadeOut(800, function() {
+                            $(this).remove();
+                            });
+
+                          },
+                         error: function (error) {
+                            console.log(error);
+                         }
+
+                 });
+
+                }
+            });
+
+        });
+
+    });
+
+</script>

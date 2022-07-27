@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Custom\Repo\Api\CustomRepositoryInterface"
+                type="Custom\Repo\Model\CustomRepository"/>
+    <preference for="Custom\Repo\Api\Data\CustomInterface"
+                type="Custom\Repo\Model\Custom"/>
+    <preference for="Custom\Repo\Api\Data\CustomSearchResultInterface"
+                type="Custom\Repo\Model\CustomSearchResult"/>
+</config>
